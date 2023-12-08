@@ -1,5 +1,7 @@
 use std::io::BufRead;
 
+pub mod range;
+
 pub fn get_input_file_path() -> String {
     let args = std::env::args().collect::<Vec<String>>();
     if args.len() < 2 {
@@ -27,15 +29,4 @@ pub fn read_file_line_by_line(path: &str) -> Vec<String> {
     let file = std::fs::File::open(path).unwrap();
     let reader = std::io::BufReader::new(file);
     reader.lines().map(|l| l.unwrap()).collect()
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
 }
